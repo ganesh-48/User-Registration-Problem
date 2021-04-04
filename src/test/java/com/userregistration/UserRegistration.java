@@ -17,4 +17,10 @@ public class UserRegistration {
         boolean result = userRegistrationDetails.registerLastName("Sharma");
         Assert.assertEquals(result,true);
     }
+
+    @Test
+    public void giveEmail_whereProper_ShouldReturnTrue() {
+        boolean result = userRegistrationDetails.registerEmail("abc@gmail.com");
+        Assert.assertEquals(result,true);
+    }
 }

@@ -8,6 +8,7 @@ public class UserRegistrationDetails {
     Scanner scanner = new Scanner(System.in);
     private String firstName;
     private String lastName;
+    private String email;
 
     /*Checking the first name of user is valid or invalid
      *First name start with Upper case character
@@ -16,12 +17,6 @@ public class UserRegistrationDetails {
         System.out.println("Enter your first name:");
         String firstName = scanner.nextLine();
         return firstName;
-    }
-
-    public String getLastName(){
-        System.out.println("Enter your last name:");
-        String lastName = scanner.nextLine();
-        return lastName;
     }
 
     public boolean registerFirstName(String firstName) {
@@ -36,6 +31,15 @@ public class UserRegistrationDetails {
         return matches;
     }
 
+    /*Checking the Last name of user is valid or invalid
+     *Last name start with Upper case character
+     */
+    public String getLastName(){
+        System.out.println("Enter your last name:");
+        String lastName = scanner.nextLine();
+        return lastName;
+    }
+
     public boolean registerLastName(String lastName) {
         Pattern pattern = Pattern.compile("[A-z]{1}[a-z]{2}+",Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(lastName);
@@ -47,6 +51,27 @@ public class UserRegistrationDetails {
         }
         return matches;
     }
+
+    //Checking the Email  is valid or invalid
+    public String getEmail(){
+        System.out.println("Enter your Email:");
+        String email = scanner.nextLine();
+        return email;
+    }
+
+    public boolean registerEmail(String email) {
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@\" + \"[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$",
+                Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        boolean matches = matcher.find();
+        if(matches) {
+            System.out.println("Your Email is valid");
+        } else {
+            System.out.println("Your Email is invalid");
+        }
+        return matches;
+    }
+
     public static void main(String[] args){
         System.out.println("Welcome to user registration problem ");
         UserRegistrationDetails userRegistrationDetails = new UserRegistrationDetails();
@@ -54,6 +79,7 @@ public class UserRegistrationDetails {
         userRegistrationDetails.registerFirstName(firstName);
         String lastName = userRegistrationDetails.getLastName();
         userRegistrationDetails.registerLastName(lastName);
+        String email = userRegistrationDetails.getEmail();
+        userRegistrationDetails.registerEmail(email);
     }
-
 }
