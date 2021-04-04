@@ -97,6 +97,7 @@ public class UserRegistrationDetails {
     /*check the password is valid or invalid
     *The password should be minimum 8 characters or more
     * In password at least one upper case letter
+    * In password at least one numeric number
      */
     public String getPassword(){
         System.out.println("Enter your password:");
