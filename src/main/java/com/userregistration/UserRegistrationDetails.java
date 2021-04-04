@@ -10,6 +10,7 @@ public class UserRegistrationDetails {
     private String lastName;
     private String email;
     private String mobileNumber;
+    private String password;
 
     /*Checking the first name of user is valid or invalid
      *First name start with Upper case character
@@ -61,7 +62,7 @@ public class UserRegistrationDetails {
     }
 
     public boolean registerEmail(String email) {
-        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@\" + \"[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$",
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$",
                 Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         boolean matches = matcher.find();
@@ -93,6 +94,28 @@ public class UserRegistrationDetails {
         return matches;
     }
 
+    /*check the password is valid or invalid
+    *The password should be minimum 8 characters or more
+     */
+    public String getPassword(){
+        System.out.println("Enter your password:");
+        String password = scanner.next();
+        return password;
+    }
+
+    public boolean registerPassword(String password) {
+        Pattern pattern = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\\\S+$).{8,}$",
+                Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(password);
+        boolean matches = matcher.find();
+        if(matches){
+            System.out.println("Your password is valid");
+        } else {
+            System.out.println("Your password is invalid");
+        }
+        return matches;
+    }
+
     public static void main(String[] args){
         System.out.println("Welcome to user registration problem ");
         UserRegistrationDetails userRegistrationDetails = new UserRegistrationDetails();
@@ -104,5 +127,7 @@ public class UserRegistrationDetails {
         userRegistrationDetails.registerEmail(email);
         String mobileNumber = userRegistrationDetails.getMobileNumber();
         userRegistrationDetails.registerMobileNumber(mobileNumber);
+        String password = userRegistrationDetails.getPassword();
+        userRegistrationDetails.registerPassword(password);
     }
 }

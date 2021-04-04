@@ -29,4 +29,10 @@ public class UserRegistration {
         boolean result = userRegistrationDetails.registerMobileNumber("+91-1234568798");
         Assert.assertEquals(result,true);
     }
+
+    @Test
+    public void givenPassword_whereProper_shouldReturnTrue() {
+        boolean result = userRegistrationDetails.registerPassword("abhay12@");
+        Assert.assertEquals(result,true);
+    }
 }
