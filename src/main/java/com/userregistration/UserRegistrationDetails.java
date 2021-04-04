@@ -9,6 +9,7 @@ public class UserRegistrationDetails {
     private String firstName;
     private String lastName;
     private String email;
+    private String mobileNumber;
 
     /*Checking the first name of user is valid or invalid
      *First name start with Upper case character
@@ -72,6 +73,26 @@ public class UserRegistrationDetails {
         return matches;
     }
 
+    //Check the mobile number predefined format
+    public String getMobileNumber(){
+        System.out.println("Enter your mobile number:");
+        String mobileNumber = scanner.nextLine();
+        return mobileNumber;
+    }
+
+    public boolean registerMobileNumber(String mobileNumber) {
+        Pattern pattern = Pattern.compile("((\\+)?(\\d{2}[-]))?((\\d{10}){1})",
+                Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(mobileNumber);
+        boolean matches =  matcher.find();
+        if(matches){
+            System.out.println("Your mobile number is valid");
+        } else {
+            System.out.println("Your mobile number is invalid");
+        }
+        return matches;
+    }
+
     public static void main(String[] args){
         System.out.println("Welcome to user registration problem ");
         UserRegistrationDetails userRegistrationDetails = new UserRegistrationDetails();
@@ -81,5 +102,7 @@ public class UserRegistrationDetails {
         userRegistrationDetails.registerLastName(lastName);
         String email = userRegistrationDetails.getEmail();
         userRegistrationDetails.registerEmail(email);
+        String mobileNumber = userRegistrationDetails.getMobileNumber();
+        userRegistrationDetails.registerMobileNumber(mobileNumber);
     }
 }

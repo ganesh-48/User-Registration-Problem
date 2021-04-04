@@ -23,4 +23,10 @@ public class UserRegistration {
         boolean result = userRegistrationDetails.registerEmail("abc@gmail.com");
         Assert.assertEquals(result,true);
     }
+
+    @Test
+    public void giveMobileNumber_whereProper_shouldReturnTrue() {
+        boolean result = userRegistrationDetails.registerMobileNumber("+91-1234568798");
+        Assert.assertEquals(result,true);
+    }
 }
