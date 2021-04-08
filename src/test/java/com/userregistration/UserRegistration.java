@@ -39,14 +39,23 @@ public class UserRegistration {
         Assert.assertEquals(true, result);
     }
 
+
     @Test
-    public void giveEmail_Le() {
+    public void givenEmail_LengthShort_ShouldReturnFalse() {
+        boolean result = userRegistrationDetails.registerEmail("abc!gmail.com");
+        Assert.assertEquals(false, result);
     }
 
     @Test
     public void giveMobileNumber_whereProper_shouldReturnTrue() {
         boolean result = userRegistrationDetails.registerMobileNumber("+91-1234568798");
         Assert.assertEquals(true, result);
+    }
+
+    @Test
+    public void giveMobileNumber_LengthShort_ShouldReturnFalse() {
+        boolean result = userRegistrationDetails.registerMobileNumber("+91 1234567");
+        Assert.assertEquals(false, result);
     }
 
     @Test
