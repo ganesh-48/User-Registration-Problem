@@ -12,6 +12,8 @@ public class UserRegistrationDetails {
     private String mobileNumber;
     private String password;
 
+
+
     /*Checking the first name of user is valid or invalid
      *First name start with Upper case character
      */
@@ -22,7 +24,7 @@ public class UserRegistrationDetails {
     }
 
     public boolean registerFirstName(String firstName) {
-        Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+", Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("[A-Z]{1}[a-z]{2}+");
         Matcher matcher = pattern.matcher(firstName);
         boolean matches = matcher.find();
         if(matches){
@@ -43,7 +45,7 @@ public class UserRegistrationDetails {
     }
 
     public boolean registerLastName(String lastName) {
-        Pattern pattern = Pattern.compile("[A-z]{1}[a-z]{2}+",Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile("[A-z]{1}[a-z]{2}+");
         Matcher matcher = pattern.matcher(lastName);
         boolean matches = matcher.find();
         if(matches){
@@ -121,7 +123,7 @@ public class UserRegistrationDetails {
 
     public static void main(String[] args){
         System.out.println("Welcome to user registration problem ");
-        UserRegistrationDetails userRegistrationDetails = new UserRegistrationDetails();
+        UserRegistrationDetails userRegistrationDetails  = new UserRegistrationDetails();
         String firstName = userRegistrationDetails.getFirstName();
         userRegistrationDetails.registerFirstName(firstName);
         String lastName = userRegistrationDetails.getLastName();
