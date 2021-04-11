@@ -11,8 +11,11 @@ public class UserRegistrationDetails {
     private String email;
     private String mobileNumber;
     private String password;
-
-
+    Pattern firstNamePattern = Pattern.compile("^[A-Z][a-z]{2,}$");
+    Pattern lastNamePattern = Pattern.compile("^[A-Z][a-z]{2,}$");
+    Pattern emailPattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$", Pattern.CASE_INSENSITIVE);
+    Pattern mobileNumberPattern = Pattern.compile("((\\+)?(\\d{2}[-]))?((\\d{10}){1})", Pattern.CASE_INSENSITIVE);
+    Pattern passwordPattern = Pattern.compile("(?=.*[A-Z])[0-9a-z$%&*@!#]{8,}$", Pattern.CASE_INSENSITIVE);
 
     /*Checking the first name of user is valid or invalid
      *First name start with Upper case character
