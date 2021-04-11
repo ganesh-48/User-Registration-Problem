@@ -1,9 +1,9 @@
 package com.userregistration;
 
-import com.userregistration.UserRegistrationDetails;
-import org.junit.Assert;
+
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
@@ -57,7 +57,11 @@ public class EmailValidationTest {
 
     @Test
     public void testEmailValidation() {
-        System.out.println("expected result for email is " + expectedResult);
-        Assert.assertEquals(expectedResult, registerdEmail.registerEmail(email));
+        try {
+            System.out.println("expected result for email is " + expectedResult);
+            Assertions.assertEquals(expectedResult, registerdEmail.registerEmail(email));
+        } catch (UserInvalidRegistrationDetailsException e) {
+            e.printStackTrace();
+        }
     }
 }
